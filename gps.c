@@ -37,11 +37,11 @@
  *  are used)
  */
 int
-gps_unpack_sf123(uint32_t *sf, struct gps_ephemeris_sv *eph)
+gps_unpack_sf123(long unsigned int *sf, struct gps_ephemeris_sv *eph)
 {
-	uint32_t *sf1 = &sf[0];
-	uint32_t *sf2 = &sf[8];
-	uint32_t *sf3 = &sf[16];
+	long unsigned int *sf1 = &sf[0];
+	long unsigned int *sf2 = &sf[8];
+	long unsigned int *sf3 = &sf[16];
 
 	int iode1, iode2;
 
@@ -108,7 +108,7 @@ gps_unpack_sf123(uint32_t *sf, struct gps_ephemeris_sv *eph)
  *  are used)
  */
 int
-gps_unpack_sf45_almanac(uint32_t *sf, struct gps_almanac_sv *alm)
+gps_unpack_sf45_almanac(long unsigned int *sf, struct gps_almanac_sv *alm)
 {
 	/* this is the page ID but not the satellite ID, its wrong in subframe 5 */
 	alm->sv_id      = GET_FIELD_U(sf[0],  6, 16);
