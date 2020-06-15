@@ -28,6 +28,7 @@ extern "C" {
 #endif
 
 #include <stdint.h>
+#include <time.h>
 
 
 #define MAX_SV	64
@@ -155,6 +156,7 @@ struct gps_ref_pos {	/* WSG84 ellipsoid */
 struct gps_ref_time {
 	int wn;			/* GPS week number */
 	double tow;		/* in seconds */
+	time_t when;    /* time in seconds when time was set */
 };
 
 
@@ -165,6 +167,7 @@ struct gps_ref_time {
 #define GPS_FIELD_EPHEMERIS	(1<<3)
 #define GPS_FIELD_REFPOS	(1<<4)
 #define GPS_FIELD_REFTIME	(1<<5)
+#define GPS_FIELD_REALTIME_INT	(1<<6)
 
 struct gps_assist_data {
 	int fields;

@@ -1,6 +1,6 @@
 
-ASN1C=../../../tmp/rrlp/asn1c/asn1c/asn1c
-ASN1_INCLUDE=/home/tnt/tmp/rrlp/asn1c/skeletons
+ASN1C=/usr/bin/asn1c
+ASN1_INCLUDE=/root/osmocom-lcs/asn1
 CC=gcc
 CFLAGS=-I$(ASN1_INCLUDE) -Iasn1_gen -O3 -Wall
 

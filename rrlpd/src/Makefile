@@ -1,6 +1,6 @@
 # !! adjust as needed !!
-ASN1C=/usr/local/bin/asn1c
-ASN1_INCLUDE=/usr/src/asn1c/skeletons
+ASN1C=/usr/bin/asn1c
+ASN1_INCLUDE=/root/osmocom-lcs/asn1
 
 CC=gcc
 # -DEMIT_ASN_DEBUG=1 ??
@@ -11,7 +11,7 @@ ASN1_FILES=$(wildcard asn1/*.asn)
 all: rrlp-serv
 
 rrlp-serv: librrlp-asn1.a main.o rrlp.o ubx.o ubx-parse.o gps.o
-	$(CC) $(CFLAGS) -o $@ main.o rrlp.o ubx.o ubx-parse.o gps.o -L. -lrrlp-asn1
+	$(CC) $(CFLAGS) -o $@ main.o rrlp.o ubx.o ubx-parse.o gps.o -L. -lrrlp-asn1 -lm
 	
 #
 # ASN1 file autogeneration (need recursive makefile call)

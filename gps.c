@@ -92,7 +92,7 @@ gps_unpack_sf123(uint32_t *sf, struct gps_ephemeris_sv *eph)
 	eph->aodo	= GET_FIELD_U(sf2[7],  5,  2);
 
 	/* Check & cross-validate iodc[7:0], iode1, iode2 */
-	if ((iode1 != iode2) || (iode1 != (eph->iodc & 0xff))) {
+	if ((iode1 != iode2) || (iode1 != (eph->iodc & 0xff))) {	
 		fprintf(stderr, "gps_unpack_sf123 failed\n");
 		return -1;
 	}
@@ -112,7 +112,7 @@ gps_unpack_sf45_almanac(uint32_t *sf, struct gps_almanac_sv *alm)
 {
 	/* this is the page ID but not the satellite ID, its wrong in subframe 5 */
 	alm->sv_id      = GET_FIELD_U(sf[0],  6, 16);
-
+	
 	alm->e		= GET_FIELD_U(sf[0], 16,  0);
 	alm->t_oa	= GET_FIELD_U(sf[1],  8, 16);
 	alm->ksii	= GET_FIELD_S(sf[1], 16,  0);
@@ -125,7 +125,7 @@ gps_unpack_sf45_almanac(uint32_t *sf, struct gps_almanac_sv *alm)
 	alm->a_f0	= (GET_FIELD_S(sf[7], 8, 16) << 3) | \
 	                   GET_FIELD_U(sf[7], 3,  2);
 	alm->a_f1	= GET_FIELD_S(sf[7], 11,  5);
-
+	
 	return 0;
 }
 

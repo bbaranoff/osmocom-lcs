@@ -57,7 +57,7 @@
 #include "ubx.h"
 #include "ubx-parse.h"
 #include "rrlp.h"
-
+#include <signal.h>
 #define DEBUG 1
 #if DEBUG
 	#define printd(x, args ...) printf(x, ## args)
