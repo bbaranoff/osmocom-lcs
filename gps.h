@@ -181,8 +181,8 @@ struct gps_assist_data {
 
 
 /* GPS Subframe utility methods (see gps.c for details) */
-int gps_unpack_sf123(long unsigned int *sf, struct gps_ephemeris_sv *eph);
-int gps_unpack_sf45_almanac(long unsigned int *sf, struct gps_almanac_sv *alm);
+int gps_unpack_sf123(uint32_t *sf, struct gps_ephemeris_sv *eph);
+int gps_unpack_sf45_almanac(uint32_t *sf, struct gps_almanac_sv *alm);
 
 
 #ifdef __cplusplus

@@ -142,42 +142,42 @@ struct ubx_hdr {
 
 /* Payload formats (some of them) */
 struct ubx_nav_posllh {
-	long unsigned int itow; /* ms */
-	long int  lon;	/* scaling 1e-7 */
-	long int  lat;	/* scaling 1e-7 */
-	long int  height;/* mm */
-	long int  hsl;	/* mm */
-	long unsigned int hacc;	/* mm */
-	long unsigned int vacc;	/* mm */
+	uint32_t itow; /* ms */
+	int32_t  lon;	/* scaling 1e-7 */
+	int32_t  lat;	/* scaling 1e-7 */
+	int32_t  height;/* mm */
+	int32_t  hsl;	/* mm */
+	uint32_t hacc;	/* mm */
+	uint32_t vacc;	/* mm */
 } __attribute__((packed));
 
 struct ubx_aid_ini {
-	long int  x;
-	long int  y;
-	long int  z;
-	long unsigned int posacc;
-	unsigned int tm_cfg;
-	unsigned int wn;
-	long unsigned int tow; /* ms */
-	long int  tow_ns;
-	long unsigned int tacc_ms;
-	long unsigned int tacc_ns;
-	long int  clkd;
-	long unsigned int clkdacc;
-	long unsigned int flags;
+	int32_t  x;
+	int32_t  y;
+	int32_t  z;
+	uint32_t posacc;
+	uint16_t tm_cfg;
+	uint16_t wn;
+	uint32_t tow; /* ms */
+	int32_t  tow_ns;
+	uint32_t tacc_ms;
+	uint32_t tacc_ns;
+	int32_t  clkd;
+	uint32_t clkdacc;
+	uint32_t flags;
 } __attribute__((packed));
 
 struct ubx_aid_hui {
-	long unsigned int health;
+	uint32_t health;
 	double   utc_a1;
 	double   utc_a0;
-	long int  utc_tot;
-	long int  utc_wnt;
-	int  utc_ls;
-	int  utc_wnf;
-	int  utc_dn;
-	int  utc_lsf;
-	int  utc_spare;
+	int32_t  utc_tot;
+	int16_t  utc_wnt;
+	int16_t  utc_ls;
+	int16_t  utc_wnf;
+	int16_t  utc_dn;
+	int16_t  utc_lsf;
+	int16_t  utc_spare;
 	float    klob_a0;
 	float    klob_a1;
 	float    klob_a2;
@@ -186,28 +186,28 @@ struct ubx_aid_hui {
 	float    klob_b1;
 	float    klob_b2;
 	float    klob_b3;
-	long unsigned int flags;
+	uint32_t flags;
 } __attribute__((packed));
 
 struct ubx_aid_alm {
-	long unsigned int sv_id;
-	long unsigned int gps_week;
-	long unsigned int alm_words[8];	/* Present only if 'gps_week' != 0 */
+	uint32_t sv_id;
+	uint32_t gps_week;
+	uint32_t alm_words[8];	/* Present only if 'gps_week' != 0 */
 } __attribute__((packed));
 
 struct ubx_aid_eph {
-	long unsigned int sv_id;
-	long unsigned int present;
-	long unsigned int eph_words[24];	/* Present only if 'present' != 0 */
+	uint32_t sv_id;
+	uint32_t present;
+	uint32_t eph_words[24];	/* Present only if 'present' != 0 */
 } __attribute__((packed));
 
 struct ubx_nav_timegps {
-	long unsigned int itow;	/* ms */
-	long int  ftow;	/* ns */
-	int  week;
-	unsigned int  leaps;
-	unsigned int  valid;
-	long unsigned int tacc;	/* ns */
+	uint32_t itow;	/* ms */
+	int32_t  ftow;	/* ns */
+	int16_t  week;
+	uint8_t  leaps;
+	uint8_t  valid;
+	uint32_t tacc;	/* ns */
 } __attribute__((packed));
 
 /* Message handler */
@@ -215,8 +215,8 @@ typedef void (*ubx_msg_handler_t)(
 	struct ubx_hdr *hdr, void *payload, int payload_len, void *userdata);
 
 struct ubx_dispatch_entry {
-	unsigned int msg_class;
-	unsigned int msg_id;
+	uint8_t msg_class;
+	uint8_t msg_id;
 	ubx_msg_handler_t handler;
 };
 
